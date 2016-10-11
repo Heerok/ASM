@@ -1,0 +1,77 @@
+﻿    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Events</h1>
+        <ol class="breadcrumb">
+            <li><a><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li class="active">Events</li>
+        </ol>
+    </section>
+    <!-- Development content -->
+    <section class="content well">
+        <div class="col-md-12 row">
+            <div class="pull-left">
+                <span class="input-icon">
+                    <input class="form-control" type="text" placeholder="Search events" size="15" ng-model="searchText"/>
+                    <!--<i class="glyphicon glyphicon-search"></i>-->
+                </span>
+            </div>
+            <div class="pull-right">
+                <button class="" type="button" data-ng-click="edit()" ><i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;Create</button>
+            </div>
+        </div>
+        <div class="table-scrollable">
+            <table class="table table-striped table-bordered table-responsive">
+                <thead>
+                <tr>
+                    <th class="bg-darkcarbon white">Event Name</th>
+                    <th class="bg-darkcarbon white">Event Details</th>
+                    <th>Active</th>
+                    <!--<th></th>-->
+                    <th class="bg-darkcarbon"><i class="glyphicon glyphicon-edit white"></i></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="e in vm.events |filter:searchText">
+                    <td>{{e.eventName}}</td>
+                    <td>{{e.eventDetails}}</td>
+                    <td>{{e.active}}</td>
+                    <td><a href="" data-ng-click="edit(e)" tooltip-placement="top" tooltip="Edit Event"><i class="glyphicon glyphicon-edit"></i></a></td>
+                    <td><a href="" data-ng-click="delete(e.id)" tooltip-placement="top" tooltip="Delete Event"><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <script type="text/ng-template" id="editEventModal">
+        <div class="modal-header bg-blue">
+            <a href="" class="btn btn-circle btn-xs blue pull-right" data-toggle="tooltip" title="Close !" data-ng-click="$close()"><i class="glyphicon glyphicon-remove"></i></a>
+            <h4 class="modal-title white"><b>{{update}} Event</b></h4>
+        </div>
+        <div class="modal-body">
+            <div>
+                <div class="row">
+                    <label class="col-sm-3 control-label no-padding-right no-padding-left"><b>Event Name</b></label>
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control" data-ng-model="event.eventName">
+                    </div>
+                </div><br><br>
+                <div class="row">
+                    <label class="col-sm-3 control-label no-padding-right no-padding-left"><b>Event Details</b></label>
+                    <div class="col-lg-9">
+                        <textarea class="form-control" data-ng-model="event.eventDetails"></textarea>
+                    </div>
+                </div><br><br>
+                <div class="row">
+                    <label class="col-sm-3 control-label no-padding-right no-padding-left"><b>Active</b></label>
+                    <div class="col-lg-3">
+                        <input type="checkbox" data-ng-model="event.active">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-blue" data-ng-click="save(event)"><i class="fa fa-save"></i>Save</button>
+        </div>
+    </script>
+
