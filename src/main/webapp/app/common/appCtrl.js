@@ -116,37 +116,12 @@ function ($rootScope, $scope, $state, $location, Flash,appSettings) {
             title: "Sattras",
             icon: "graduation-cap",
             state: "satras"
-        }/*,
-        {
-            title: "Experience",
-            icon: "suitcase",
-            state: "experience"
         },
         {
-            title: "Recent Projects",
-            icon: "file-code-o",
-            state: "recent"
-        },
-        {
-            title: "Websites",
-            icon: "globe",
-            state: "websites"
-        },
-        {
-            title: "Portfolio",
-            icon: "anchor",
-            state: "portfolio"
-        },
-        {
-            title: "About Me",
-            icon: "user-secret",
-            state: "about"
-        },
-        {
-            title: "Contact",
-            icon: "phone",
-            state: "contact"
-        }*/
+            title: "Articles",
+            icon: "gears",
+            state: "articles"
+        }
     ];
 
     //set the theme selected

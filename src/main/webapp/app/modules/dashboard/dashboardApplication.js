@@ -36,6 +36,17 @@ dashboard.config(["$stateProvider", function ($stateProvider) {
         }
     });
 
+    //articles page state
+    $stateProvider.state('app.articles', {
+        url: '/articles',
+        templateUrl: 'app/modules/dashboard/views/articles.html',
+        controller: 'ArticlesController',
+        controllerAs: 'vm',
+        data: {
+            pageTitle: 'Articles'
+        }
+    });
+
 
 }]);
 

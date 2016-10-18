@@ -1,0 +1,104 @@
+﻿<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Articles</h1>
+    <ol class="breadcrumb">
+        <li><a><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Articles</li>
+    </ol>
+</section>
+<!-- Development content -->
+<section class="content well">
+    <div class="col-md-12 row">
+        <div class="pull-left">
+                <span class="input-icon">
+                    <input class="form-control" type="text" placeholder="Search Article" size="15" ng-model="searchText"/>
+                    <!--<i class="glyphicon glyphicon-search"></i>-->
+                </span>
+        </div>
+        <div class="pull-right">
+            <button class="" type="button" data-ng-click="edit()" ><i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;Create</button>
+        </div>
+    </div>
+    <div class="table-scrollable">
+        <table class="table table-striped table-bordered table-responsive">
+            <thead>
+            <tr>
+                <th class="bg-darkcarbon white">Article name</th>
+                <th class="bg-darkcarbon white">Author's Name</th>
+                <th class="bg-darkcarbon white">Language</th>
+                <th class="bg-darkcarbon white">Active</th>
+                <th>File</th>
+                <th class="bg-darkcarbon"><i class="glyphicon glyphicon-edit white"></i></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-ng-repeat="e in vm.articles |filter:searchText">
+                <td>{{e.name}}</td>
+                <td>{{e.author}}</td>
+                <td>{{e.language}}</td>
+                <td>{{e.active}}</td>
+                <td><a href="#" ng-click="viewFile(e)">View</a></td>
+                <td><a href="" data-ng-click="edit(e)" tooltip-placement="top" tooltip="Edit Article"><i class="glyphicon glyphicon-edit"></i></a></td>
+                <td><a href="" data-ng-click="delete(e.id)" tooltip-placement="top" tooltip="Delete Article"><i class="glyphicon glyphicon-trash"></i></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<script type="text/ng-template" id="editEventModal">
+    <div class="modal-header bg-blue">
+        <a href="" class="btn btn-circle btn-xs blue pull-right" data-toggle="tooltip" title="Close !" data-ng-click="$close()"><i class="glyphicon glyphicon-remove"></i></a>
+        <h4 class="modal-title white"><b>{{update}} Article</b></h4>
+    </div>
+    <div class="modal-body">
+        <div>
+            <div class="row">
+                <label class="col-sm-4 control-label no-padding-right no-padding-left"><b>Language</b></label>
+                <div class="col-sm-5">
+                    <select ng-model="event.lang">
+                        <option ng-repeat="ut in uploadTypes" value="{{ut.Code}}">{{ut.Value}}</option>
+                    </select>
+                </div>
+            </div><br><br>
+
+            <div class="row">
+                <label class="col-sm-3 control-label no-padding-right no-padding-left"><b>Article Name</b></label>
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" data-ng-model="event.name">
+                </div>
+            </div><br><br>
+            <div class="row">
+                <label class="col-sm-3 control-label no-padding-right no-padding-left"><b>Author's Name</b></label>
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" data-ng-model="event.author">
+                </div>
+            </div><br><br>
+            <div class="row">
+                <label class="col-sm-3 control-label no-padding-right no-padding-left"><b>Article File</b></label>
+                <input class="col-sm-6 btn btn-primary" type="file" file-model="myFile"/>
+            </div><br><br>
+            <div class="row">
+                <label class="col-sm-3 control-label no-padding-right no-padding-left"><b>Active</b></label>
+                <div class="col-lg-3">
+                    <input type="checkbox" data-ng-model="event.active">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-blue" data-ng-click="save(event,myFile)"><i class="fa fa-save"></i>Save</button>
+    </div>
+</script>
+<script type="text/ng-template" id="pdf">
+    <div class="modal-header bg-blue">
+        <a href="" class="btn btn-circle btn-xs blue pull-right" data-toggle="tooltip" title="Close !" data-ng-click="$close()"><i class="glyphicon glyphicon-remove"></i></a>
+        <h4 class="modal-title white"><b>Article</b></h4>
+    </div>
+    <div class="modal-body">
+        <div>
+            <embed src="{{pdfFile}}" width="600" height="500" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
+        </div>
+    </div>
+</script>
+
