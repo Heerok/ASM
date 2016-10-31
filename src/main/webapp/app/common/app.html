@@ -48,33 +48,44 @@
                             </li>
                         </ul>
                     </li>
+                    <style>
+                        #wgtmsr{
+                             width:150px;
+                        }
+                        #wgtmsr ul{
+                              width:150px;
+                        }
+                        #wgtmsr ul li{
+                              width:150px;
+                              height:150px;
+                        }
+                        #footer{
+                              width:150px;
+                              height:10px;
+                        }
+                    </style>
 
                     <!-- User Account: style can be found in dropdown.less -->
-                    <li class="dropdown user user-menu">
+                    <li class="dropdown user user-menu" id="wgtmsr">
                         <a class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../../images/ranjith.png" class="user-image" alt="User Image" />
+                            <img src="../../images/user.png" class="user-image" alt="User Image" />
                             <span class="hidden-xs">ASM Admin</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="../../images/ranjith.png" class="img-circle" alt="User Image">
+                                <img src="../../images/user.png" class="img-circle" alt="User Image">
 
-                                    <h3>ASM Admin</h3>
+                                <h4>ASM Admin</h4><br>
+                                <div class="pull-right">
+                                    <a ui-sref="login" class="btn btn-primary btn-flat">Log Out</a>
+                                </div>
                                 <!--<p class="text-center">
                                     Software Engineer
                                      <small>Playing in Web - since 2010</small>
                                  </p>-->
                             </li>
-                            <!-- Menu Footer-->
-                            <li class="user-footer">
-                                <!--<div class="pull-left">
-                                    <a ui-sref="app.about" class="btn btn-success btn-flat">About Me</a>
-                                </div>-->
-                                <div class="pull-right">
-                                    <a ui-sref="login" class="btn btn-danger btn-flat">Log Out</a>
-                                </div>
-                            </li>
+
                         </ul>
                     </li>
                 </ul>

@@ -34,7 +34,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr data-ng-repeat="e in vm.events |filter:searchText">
+            <tr data-ng-repeat="e in filteredTodos |filter:searchText">
                 <td>{{e.sattraName}}</td>
                 <td>{{e.sattradhikarName}}</td>
                 <td>{{e.phoneNo}}</td>
@@ -46,6 +46,12 @@
             </tr>
             </tbody>
         </table>
+        <pagination
+                ng-model="currentPage"
+                total-items="vm.events.length"
+                max-size="maxSize"
+                boundary-links="true">
+        </pagination>
     </div>
 </section>
 <script type="text/ng-template" id="editEventModal">

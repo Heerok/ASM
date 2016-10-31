@@ -2,13 +2,24 @@
 function ($rootScope, $scope, $state, $location, dashboardService, Flash,$http,$modal) {
     var vm = this;
 
+    $scope.currentPage = 1;
+    $scope.numPerPage = 10
+      ,$scope.maxSize = 5;
+
     $scope.init = function(){
 
         $http.get("/admin/sattra/findAll").then(function(res){
             vm.events = res.data;
+    $scope.$watch('currentPage + numPerPage', function() {
+        var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+        , end = begin + $scope.numPerPage;
+
+        $scope.filteredTodos = vm.events.slice(begin, end);
+      });
         });
 
     }
+
 
     $scope.init();
 
