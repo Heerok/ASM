@@ -1,0 +1,61 @@
+﻿<script type="text/javascript">
+var appName = window.location.host.split('.');
+if(appName.length<=1)
+    document.getElementById("appName").innerHTML = "FieldRun";
+else
+    document.getElementById("appName").innerHTML = appName[0].toString()
+</script>
+<html>
+
+<div class="navbar-inner">
+    <div class="navbar-container">
+        <div class="sidebar-collapse"></div>
+        <div class="navbar-header pull-left">
+            <a id="appName" class="navbar-brand" href="#"></a>
+        </div>
+        <div class="navbar-header pull-right">
+            <div class="navbar-account" ng-controller="UserAccountController">
+                <ul class="account-area">
+                    <li>
+                        <img data-ng-src="{{logoPath}}">
+                    </li>
+                    <li>
+
+                        <a class="login-area dropdown-toggle" data-toggle="dropdown">
+                            <div class="avatar" title="View your public profile">
+                                <img data-ng-hide="roleHypCustomer" src="assets/img/avatars/user.jpg">
+                                <img data-ng-show="roleHypCustomer" src="images/user_online_green.png">
+                            </div>
+
+                            <section>
+                                <h2 data-ng-hide="roleHypCustomer"><span class="profile">{{user.username|uppercase}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></h2>
+                                <h2 data-ng-show="roleHypCustomer"><span class="profile"><b>Hi {{user.firstname}}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></h2><br>
+                            </section>
+
+                        </a>
+                        <!--Login Area Dropdown-->
+                        <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area" >
+                            <li class="email"><a><p style="color:blue"><b>{{user.firstname+" "+(user.lastname?user.lastname:"")}}</b></p>
+                                <p style="color:green"><small>{{user.email}}</small></p></a></li>
+
+                            <!--<li class="email"><a><small>{{user.email}}</small></a></li>-->
+                            <!--Avatar Area-->
+
+                            <li data-ng-hide="roleHypCustomer">
+                                <div class="avatar-area">
+                                    <img src="assets/img/avatars/user.jpg" class="avatar">
+                                </div>
+                            </li>
+                            <li class="dropdown-footer">
+                                <a href="#" ng-click="logout()">Sign out</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                    </div>
+            <script src="app/controllers/admin/useraccount.js"></script>
+            </div>
+        </div>
+    </div>
+
+</html>
