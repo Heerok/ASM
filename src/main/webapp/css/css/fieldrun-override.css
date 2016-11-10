@@ -1,0 +1,27 @@
+.fieldrun-primarypanel {
+    background-color: #fbfbfb !important;
+    color: #555 !important;
+    border-color: #f3f3f3 !important;
+}
+
+.fieldrun-panelheading {
+    background-color: #fff !important;
+    color: #555 !important;
+    border-color: #f3f3f3 !important;
+}
+
+.fieldrun-checkbox-override {
+    left: 1px !important;
+    top: 5px !important;
+    opacity: 2 !important;
+    position: relative !important;
+    width: 15px !important;
+}
+
+input[type="checkbox"] {
+    left: 1px !important;
+    top: 5px !important;
+    opacity: 2 !important;
+    position: relative !important;
+    width: 15px !important;
+}

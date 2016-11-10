@@ -1,0 +1,11 @@
+{
+  "label": "Admin",
+  "icon": "user-plus",
+  "submenu": [
+    {
+      "link": "/admin/department/",
+      "label": "Department",
+      "privilege":""
+    }
+  ]
+}

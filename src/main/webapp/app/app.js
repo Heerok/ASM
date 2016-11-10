@@ -1,27 +1,35 @@
-var app = angular.module('app', ['ui.router', 'ui.bootstrap', 'flash',
-    //main modules
-    'login', 'dashboard']);
+'use strict';
+var readOnlyMap = {};
+var app = angular.module('app', ['ngRoute',
+    'dndLists',
+    'ngAnimate',
+    'ngCookies',
+    'ngResource',
+    'ngSanitize',
+    'ngTouch',
+    'ngStorage',
+    'ui.router',
+    'ncy-angular-breadcrumb',
+    'ui.bootstrap',
+    'ui.utils',
+    'oc.lazyLoad',
+    'angular-dimple',
+    'DragNDrop',
+    'oi.select',
+    'angular-jwt',
+    'ngJsonExportExcel',
+    'google.places',
+    'xeditable'
+]);
 
+app.run(function ($rootScope,  $location, $localStorage, $http, jwtHelper) {
+    $rootScope.$on('$locationChangeStart', function (event, next, current) {
 
-app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider, $urlRouterProvider, $modalInstance) {
-
-    //IdleScreenList
-    $stateProvider
-       .state('app', {
-           url: '/app',
-           templateUrl: 'app/common/app.html',
-           controller: 'appCtrl',
-           controllerAs: 'vm',
-           data: {
-               pageTitle: 'Login'
-           }
-       });
-
-    $urlRouterProvider.otherwise('login');
-
-    //$urlRouterProvider.otherwise('app/dashboard');
-    //$urlRouterProvider.otherwise('/app/dashboard');
-}]);
-
-// set global configuration of application and it can be accessed by injecting appSettings in any modules
-app.constant('appSettings', appConfig);
+        console.log(event);
+        var restrictedPage = $.inArray($location.path(), ['/login', '/register', '/forgotPassword', '/resetPassword']) === -1;
+        var loggedIn = $localStorage.token && !jwtHelper.isTokenExpired($localStorage.token);
+        if (restrictedPage && !loggedIn) {
+            $location.path('/login');
+        }
+    });
+});
