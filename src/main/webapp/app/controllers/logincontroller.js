@@ -1,7 +1,4 @@
 app.controller('LoginController', function ($rootScope, $scope, $http, Auth) {
-    $scope.loginPage = 'default';
-    if(window.location.hostname == 'meratask.fieldrun.in')
-        $scope.loginPage = 'meratask';
     $scope.login = function () {
         var formData = {
             email: $scope.email,
