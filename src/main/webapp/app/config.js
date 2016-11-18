@@ -44,7 +44,7 @@ app.config(function ($breadcrumbProvider) {
     });
 });
 
-    if(localStorage.getItem('ngStorage-token') !=null){
+   /* if(localStorage.getItem('ngStorage-token') !=null){
         $.ajaxSetup({
             beforeSend: function (xhr)
             {
@@ -53,4 +53,4 @@ app.config(function ($breadcrumbProvider) {
                 }
             }
         });
-    }
+    }*/

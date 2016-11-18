@@ -1,6 +1,10 @@
 package digitalaxom.asm.db;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import java.util.Set;
 
 /**
  * Created by Heerok on 11-10-2016.
@@ -14,6 +18,19 @@ public class SattrasList extends BaseModel{
     private String contactDetails;
     private String district;
     private String state;
+
+    @ManyToMany
+    @JoinTable(name="sattra_articles", joinColumns = {@JoinColumn(name = "sattra_id")},
+    inverseJoinColumns = {@JoinColumn(name = "article_id")})
+    private Set<Article> articles;
+
+    public Set<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(Set<Article> articles) {
+        this.articles = articles;
+    }
 
     public String getSattraName() {
         return sattraName;

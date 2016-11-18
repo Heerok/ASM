@@ -33,22 +33,6 @@ moduleApp.run(
                             label: 'Login'
                         }
                     })
-                    .state('resetPassword', {
-                        url: "/resetPassword",
-                        controller: 'ResetPasswordController',
-                        templateUrl: "views/resetPassword.html",
-                        ncyBreadcrumb: {
-                            label: 'FieldRun Reset Password'
-                        }
-                    })
-                    .state('forgotPassword', {
-                        url: "/forgotPassword",
-                        controller: 'ForgotPasswordController',
-                        templateUrl: "views/forgotPassword.html",
-                        ncyBreadcrumb: {
-                            label: 'FieldRun Forgot Password'
-                        }
-                    })
                     .state('app.dashboard', {
                         url: '/dashboard',
                         templateUrl: 'views/dashboard.html',

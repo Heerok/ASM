@@ -1,15 +1,14 @@
 var dynamicConfig = function(){
       var config = [
           {
-            allowedForUrl : "/admin/messages",
-            state:"app.Messages",
+            allowedForUrl : "/admin/sattra",
+            state:"app.Sattra List",
             urlRender:{
-                        url: '/admin/messages',
-                        templateUrl: 'views/admin/messages.html',
+                        url: '/admin/sattra',
+                        templateUrl: 'app/modules/dashboard/views/satras.html',
                         ncyBreadcrumb: {
-                              label: 'Messages',
-                              description: 'Messages',
-                              url: '/admin/messages'
+                              label: 'Sattra List',
+                              description: 'Sattra List'
                         },
                         resolve: {
                               deps: [
@@ -18,20 +17,66 @@ var dynamicConfig = function(){
                                       return $ocLazyLoad.load({
                                           serie: true,
                                           files: [
-                                                'app/service/optionService.js',
-                                                'app/controllers/admin/facilitiesformessage.js',
-                                                'app/controllers/admin/messages.js',
-                                                'app/controllers/seller/booknewpickup.js',
-                                                'app/controllers/seller/updatebookedpickup.js',
-                                                'app/service/communicator.js',
-                                                'app/service/holder.js'
+                                                'app/modules/dashboard/controllers/sattras.js',
+                                            '/app/directives/dirPagination.js'
                                           ]
                                       });
                                   }
                               ]
                         }
                      }
-          }
+          },{
+              allowedForUrl : "/admin/articles",
+              state:"app.Articles",
+              urlRender:{
+                          url: '/admin/articles',
+                          templateUrl: 'app/modules/dashboard/views/articles.html',
+                          ncyBreadcrumb: {
+                                label: 'Articles',
+                                description: 'Articles'
+                          },
+                          resolve: {
+                                deps: [
+                                    '$ocLazyLoad',
+                                    function ($ocLazyLoad) {
+                                        return $ocLazyLoad.load({
+                                            serie: true,
+                                            files: [
+                                                  '/app/directives/dirPagination.js',
+                                                  'app/modules/dashboard/controllers/articles.js'
+                                            ]
+                                        });
+                                    }
+                                ]
+                          }
+                       }
+            },{
+                allowedForUrl : "/admin/events",
+                state:"app.Events",
+                urlRender:{
+                           url: '/admin/events',
+                           templateUrl: 'app/modules/dashboard/views/events.html',
+                           ncyBreadcrumb: {
+                                 label: 'Events',
+                                 description: 'Events'
+                           },
+                           resolve: {
+                                 deps: [
+                                     '$ocLazyLoad',
+                                     function ($ocLazyLoad) {
+                                         return $ocLazyLoad.load({
+                                             serie: true,
+                                             files: [
+                                                   'app/modules/dashboard/controllers/events.js',
+                                            '/app/directives/dirPagination.js'
+                                             ]
+                                         });
+                                     }
+                                 ]
+                           }
+                        }
+            }
+
       ];
       return config;
 };

@@ -4,7 +4,7 @@ app.controller('menuCtrl', function($scope, $http) {
   $http.get('/api/v2/menu').then(function(response){
         $scope.roleHypCustomer = false;
         var menus = response.data.submenu;
-        $http.get('/api/role/loadCurrentUserRoles').then(function(response){
+        /*$http.get('/api/role/loadCurrentUserRoles').then(function(response){
             var roleList = response.data;
             if(roleList){
                 for(var i=0;i<roleList.length;i++){
@@ -23,7 +23,8 @@ app.controller('menuCtrl', function($scope, $http) {
                 }
             }
             $scope.menus = menus;
-        });
+        });*/
+        $scope.menus = menus;
     });
 
 

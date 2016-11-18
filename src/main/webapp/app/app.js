@@ -27,7 +27,7 @@ app.run(function ($rootScope,  $location, $localStorage, $http, jwtHelper) {
 
         console.log(event);
         var restrictedPage = $.inArray($location.path(), ['/login', '/register', '/forgotPassword', '/resetPassword']) === -1;
-        var loggedIn = $localStorage.token && !jwtHelper.isTokenExpired($localStorage.token);
+        var loggedIn = $localStorage.token;
         if (restrictedPage && !loggedIn) {
             $location.path('/login');
         }

@@ -1,17 +1,10 @@
-﻿<script type="text/javascript">
-var appName = window.location.host.split('.');
-if(appName.length<=1)
-    document.getElementById("appName").innerHTML = "FieldRun";
-else
-    document.getElementById("appName").innerHTML = appName[0].toString()
-</script>
-<html>
+﻿<html>
 
-<div class="navbar-inner">
+<div class="navbar-inner ">
     <div class="navbar-container">
         <div class="sidebar-collapse"></div>
         <div class="navbar-header pull-left">
-            <a id="appName" class="navbar-brand" href="#"></a>
+            <a id="appName" class="navbar-brand" href="#">ASM Admin</a>
         </div>
         <div class="navbar-header pull-right">
             <div class="navbar-account" ng-controller="UserAccountController">

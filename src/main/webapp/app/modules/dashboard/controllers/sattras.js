@@ -1,23 +1,39 @@
-﻿dashboard.controller("SattraController", ['$rootScope', '$scope', '$state', '$location', 'dashboardService', 'Flash','$http','$modal',
-function ($rootScope, $scope, $state, $location, dashboardService, Flash,$http,$modal) {
+﻿app.controller("SattraController", ['$scope','$http','$modal',
+function ($scope, $http,$modal) {
     var vm = this;
 
-    $scope.currentPage = 1;
-    $scope.numPerPage = 10
-      ,$scope.maxSize = 5;
+     $scope.curPage = 0;
+     $scope.pageSize = 10;
+
+     $scope.setCurrentPage = function(){
+         $scope.curPage = 0;
+     };
+
+     $scope.numberOfPages = function() {
+         $scope.totalPages = Math.ceil(($scope.TotalRecordCount) / ($scope.pageSize));
+         return $scope.totalPages;
+     };
+
+     $scope.checkPage = function(pageNumber){
+         if(pageNumber > $scope.totalPages){
+             $("#shwErrMsg").html(" Page number is greater than total pages. ").show().fadeOut(3000);
+             $scope.disableJumpButton = true;
+         }else{
+             $scope.disableJumpButton = false;
+         }
+     };
+
+     $scope.jumpToPage = function(){
+         $scope.curPage = $scope.goToPage - 1;
+         $scope.goToPage = null;
+     };
 
     $scope.init = function(){
 
         $http.get("/admin/sattra/findAll").then(function(res){
-            vm.events = res.data;
-    $scope.$watch('currentPage + numPerPage', function() {
-        var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-        , end = begin + $scope.numPerPage;
-
-        $scope.filteredTodos = vm.events.slice(begin, end);
-      });
+            $scope.events = res.data;
+            $scope.TotalRecordCount = res.data.length;
         });
-
     }
 
 

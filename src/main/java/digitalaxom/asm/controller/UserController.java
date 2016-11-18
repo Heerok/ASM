@@ -24,21 +24,9 @@ public class UserController {
     @Autowired
     private UserAccountService userAccountService;
 
-    @Value("${auth.token_ttl_hrs}")
-    private int ttlhours;
-
-    @Value("${auth.secretkey}")
-    private String secretkey;
-
     @RequestMapping(value = "/userlogin",method = {RequestMethod.POST,RequestMethod.GET,RequestMethod.PUT})
     public LoginResult login(@RequestBody UserLoginDTO login){
-        String authToken = Jwts.builder()
-                .setSubject(login.getUsername())
-                .claim("roles", "ROLE_USER")
-                .setIssuedAt(new Date())
-                .setExpiration(userAccountService.getAuthExpiration(ttlhours))
-                .signWith(SignatureAlgorithm.HS512, secretkey).compact();
 
-        return new LoginResult(authToken);
+        return new LoginResult("AA");
     }
 }

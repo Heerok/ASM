@@ -1,3 +1,4 @@
+
 app.controller('LoginController', function ($rootScope, $scope, $http, Auth) {
     $scope.login = function () {
         var formData = {
