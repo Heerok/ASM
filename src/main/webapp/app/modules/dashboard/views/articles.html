@@ -76,7 +76,7 @@
                 <div class="col-md-12">
                     <label class="col-md-3 control-label no-padding-right no-padding-left"><b>Language</b></label>
                     <div class="col-md-6">
-                        <select ng-model="event.lang">
+                        <select ng-model="event.language">
                             <option ng-repeat="ut in uploadTypes" value="{{ut.Code}}">{{ut.Value}}</option>
                         </select>
                     </div>
@@ -96,6 +96,14 @@
                     </div>
                 </div>
                 <div class="row"><br><br><br></div>
+                <div class="col-md-12">
+                    <label class="col-sm-3 control-label no-padding-right no-padding-left"><b>Article</b></label>
+                    <div class="col-lg-9">
+                        <textarea rows="10" class="form-control" data-ng-model="event.articleString"></textarea>
+                    </div>
+                </div>
+                <div class="row"><br><br></div>
+                <div class="row"><br><br></div>
                 <div class="col-md-12">
                     <label class="col-md-3 control-label no-padding-right no-padding-left"><b>Article File</b></label>
                     <input class="col-md-6 btn btn-primary" type="file" file-model="myFile"/>

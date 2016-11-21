@@ -34,12 +34,13 @@ public class ArticleService {
         return articleRepository.findAll();
     }
 
-    public Article save(String name, String author, MultipartFile file, HttpServletRequest request, boolean active,String language){
+    public Article save(String name, String author, MultipartFile file, HttpServletRequest request, boolean active,String language,String articleString){
         Article article = new Article();
         article.setAuthor(author);
         article.setName(name);
         article.setActive(active);
         article.setLanguage(language);
+        article.setArticleString(articleString);
 
         if(!file.isEmpty()){
             String[] fileName = file.getOriginalFilename().split("\\.");

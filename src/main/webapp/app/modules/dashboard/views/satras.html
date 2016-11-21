@@ -33,6 +33,7 @@
                     <th>Address</th>
                     <th>District</th>
                     <th>State</th>
+                    <th>Articles</th>
                     <th>Edit</th>
                     <th></th>
                 </tr>
@@ -45,6 +46,7 @@
                     <td>{{e.contactDetails}}</td>
                     <td>{{e.district}}</td>
                     <td>{{e.state}}</td>
+                    <td><a href="#" ng-click="viewArticle(e)" tooltip="View Article(s)">{{e.articles.length}}  </a> <a href="#" tooltip="Add Article" ng-click="addArticles(e)"><i class="glyphicon glyphicon-plus"/></a></td>
                     <td><a href="" data-ng-click="edit(e)" tooltip-placement="top" tooltip="Edit Sattra"><i class="glyphicon glyphicon-edit"></i></a></td>
                     <td><a href="" data-ng-click="delete(e.id)" tooltip-placement="top" tooltip="Delete Sattra"><i class="glyphicon glyphicon-trash"></i></a></td>
                 </tr>
@@ -116,11 +118,60 @@
                             <input type="text" class="form-control" data-ng-model="event.state">
                         </div>
                     </div><br><br>
+                <div class="row"><br><br><br></div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-blue" data-ng-click="save(event)"><i class="fa fa-save"></i>Save</button>
             </div>
         </script>
+
+        <script type="text/ng-template" id="articleModal">
+            <div class="modal-header bg-blue">
+                <a href="" class="btn btn-circle btn-xs blue pull-right" data-toggle="tooltip" title="Close !" data-ng-click="$close()"><i class="glyphicon glyphicon-remove"></i></a>
+                <h4 class="modal-title white"><b>Add Article</b></h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-12">
+                    <label class="col-sm-3 control-label no-padding-right no-padding-left"><b>Select Article</b></label>
+                    <div class="col-lg-9">
+                        <select ng-model="article">
+                            <option ng-repeat="a in articles" value="{{a.id}}">{{a.name}} - {{a.author}}</option>
+                        </select>
+                    </div>
+                </div><br><br>
+                <div class="row"><br><br><br></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-blue" data-ng-click="AddArticle(article)"><i class="fa fa-save"></i>Save</button>
+            </div>
+        </script>
+        <script type="text/ng-template" id="viewArticleModal">
+            <div class="modal-header bg-blue">
+                <a href="" class="btn btn-circle btn-xs blue pull-right" data-toggle="tooltip" title="Close !" data-ng-click="$close()"><i class="glyphicon glyphicon-remove"></i></a>
+                <h4 class="modal-title white"><b>Added Article</b></h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-scrollable">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Article Name</th>
+                            <th>Author's Name</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="paginationclass" data-ng-repeat="e in articles " >
+                            <td>{{e.name}}</td>
+                            <td>{{e.author}}</td>
+                            <td><a href="" data-ng-click="deleteArticle(e.id)" tooltip-placement="top" tooltip="Delete Article"><i class="glyphicon glyphicon-trash"></i></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </script>
+
 
     </div>
 </div>

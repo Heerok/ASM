@@ -1,5 +1,6 @@
 package digitalaxom.asm.db;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
@@ -13,6 +14,16 @@ public class Article extends BaseModel{
     private String filePath;
     private boolean active;
     private String language;
+    @Column(columnDefinition = "varchar(3000)")
+    private String articleString;
+
+    public String getArticleString() {
+        return articleString;
+    }
+
+    public void setArticleString(String articleString) {
+        this.articleString = articleString;
+    }
 
     public String getLanguage() {
         return language;

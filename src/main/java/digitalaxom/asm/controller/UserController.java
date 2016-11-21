@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by Heerok on 10-11-2016.
@@ -26,7 +27,6 @@ public class UserController {
 
     @RequestMapping(value = "/userlogin",method = {RequestMethod.POST,RequestMethod.GET,RequestMethod.PUT})
     public LoginResult login(@RequestBody UserLoginDTO login){
-
-        return new LoginResult("AA");
+        return new LoginResult(UUID.randomUUID().toString());
     }
 }

@@ -68,6 +68,55 @@ function ($scope, $http,$modal) {
         });
     }
 
+    $scope.addArticles = function(e){
+
+        $http.get("/admin/articles/findAll").then(function(res){
+            $scope.articles = res.data;
+        });
+        $scope.event = e;
+        $scope.modalInstance = $modal.open({
+            templateUrl: 'articleModal',
+            size: 'md',
+            scope: $scope
+        });
+    }
+
+    $scope.AddArticle = function(a){
+        $http.post("/admin/sattra/addArticle?sattraId="+$scope.event.id+"&articleId="+a).then(function(res){
+            console.log(JSON.stringify(res));
+            if(res.data.status){
+                $.notify(res.data.message,"success");
+            }else{
+                $.notify(res.data.message,"error");
+            }
+            $scope.modalInstance.close();
+            $scope.init();
+        });
+    }
+
+    $scope.viewArticle = function(e){
+        $scope.event = e;
+        $scope.articles = e.articles;
+        $scope.modalInstance = $modal.open({
+            templateUrl: 'viewArticleModal',
+            size: 'md',
+            scope: $scope
+        });
+    }
+
+    $scope.deleteArticle = function(articleId){
+        $http.post("/admin/sattra/deleteArticle?sattraId="+$scope.event.id+"&articleId="+articleId).then(function(res){
+            console.log(JSON.stringify(res));
+            if(res.data.status){
+                $.notify(res.data.message,"success");
+            }else{
+                $.notify(res.data.message,"error");
+            }
+            $scope.modalInstance.close();
+            $scope.init();
+        });
+    }
+
 
 }]);
 

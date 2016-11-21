@@ -2,12 +2,14 @@ package digitalaxom.asm.controller;
 
 import digitalaxom.asm.db.Article;
 import digitalaxom.asm.service.ArticleService;
+import digitalaxom.asm.view.ArticleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Heerok on 04-10-2016.
@@ -20,8 +22,8 @@ public class ArticleController {
     private ArticleService articleService;
 
     @RequestMapping(value = "/findAll")
-    public List<Article> findAll(){
-        return articleService.findAll();
+    public List<ArticleDTO> findAll(){
+        return toDTO(articleService.findAll());
     }
 
     @RequestMapping(value = "/findAllActive")
@@ -30,9 +32,12 @@ public class ArticleController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public void save(@RequestParam String name, @RequestParam String author, @RequestParam("file") MultipartFile file,
-                     HttpServletRequest request, @RequestParam boolean active, @RequestParam String language){
-        articleService.save(name,author,file,request,active,language);
+    public void save(@RequestParam(required = false) String name, @RequestParam(required = false) String author,
+                     @RequestParam("file") MultipartFile file,
+                     HttpServletRequest request, @RequestParam(required = false) boolean active,
+                     @RequestParam(required = false) String language,
+                     @RequestParam(required = false) String articleString){
+        articleService.save(name,author,file,request,active,language,articleString);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -45,6 +50,11 @@ public class ArticleController {
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     public void delete(@RequestParam Long id){
         articleService.delete(id);
+    }
+
+
+    private List<ArticleDTO> toDTO(List<Article> all){
+        return all.stream().map(ArticleDTO::new).collect(Collectors.toList());
     }
 
 }

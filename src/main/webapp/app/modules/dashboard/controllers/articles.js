@@ -53,7 +53,7 @@ function ($rootScope, $scope, $state, $location, $http,$modal) {
         }
         $scope.modalInstance = $modal.open({
             templateUrl: 'editEventModal',
-            size: 'md',
+            size: 'lg',
             scope: $scope
         });
     }
@@ -77,12 +77,15 @@ function ($rootScope, $scope, $state, $location, $http,$modal) {
         if(e.name){
             fd.append('name',e.name);
         }
+        if(e.articleString){
+            fd.append('articleString',e.articleString);
+        }
         fd.append('active',e.active);
         if(e.id){
             fd.append('Id',e.id);
         }
-        if(e.lang){
-            fd.append('language',e.lang);
+        if(e.language){
+            fd.append('language',e.language);
         }
         $http.post(url, fd, {
             transformRequest: angular.identity,
