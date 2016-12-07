@@ -33,7 +33,7 @@ public class ArticleController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public void save(@RequestParam(required = false) String name, @RequestParam(required = false) String author,
-                     @RequestParam("file") MultipartFile file,
+                     @RequestParam(required = false) MultipartFile file,
                      HttpServletRequest request, @RequestParam(required = false) boolean active,
                      @RequestParam(required = false) String language,
                      @RequestParam(required = false) String articleString){
