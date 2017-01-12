@@ -26,6 +26,11 @@ public class ArticleController {
         return toDTO(articleService.findAll());
     }
 
+    @RequestMapping(value = "/{type}/findAll")
+    public List<ArticleDTO> findAllByType(@PathVariable String type){
+        return toDTO(articleService.findAllByType(type));
+    }
+
     @RequestMapping(value = "/findAllActive")
     public List<Article> findAllActive(){
         return articleService.findAllActive();

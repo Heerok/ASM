@@ -12,4 +12,6 @@ public interface ArticleRepository extends JpaRepository<Article,Long> {
 
     List<Article> findByActiveTrue();
 
+    List<Article> findByLanguageAndActiveTrue(String lang);
+
 }

@@ -33,6 +33,9 @@ public class ArticleService {
     public List<Article> findAll(){
         return articleRepository.findAll();
     }
+    public List<Article> findAllByType(String type){
+        return articleRepository.findByLanguageAndActiveTrue(type);
+    }
 
     public Article save(String name, String author, MultipartFile file, HttpServletRequest request, boolean active,String language,String articleString){
         Article article = new Article();
