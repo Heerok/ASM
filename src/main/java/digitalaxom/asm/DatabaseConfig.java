@@ -26,7 +26,7 @@ public class DatabaseConfig {
     @Value("${spring.datasource.max-active}")
     private int maximumPoolSize;
 
-    @Bean
+    /*@Bean
     @Primary
     public DataSource datasource() {
         final HikariDataSource ds = new HikariDataSource();
@@ -36,6 +36,6 @@ public class DatabaseConfig {
         ds.setUsername(databaseUsername);
         ds.setPassword(databasePassword);
         return ds;
-    }
+    }*/
 
 }
