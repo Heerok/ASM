@@ -75,7 +75,32 @@ var dynamicConfig = function(){
                                  ]
                            }
                         }
-            }
+            },{
+                 allowedForUrl : "/pricing/products",
+                 state:"app.Products",
+                 urlRender:{
+                            url: '/pricing/products',
+                            templateUrl: 'app/modules/dashboard/views/products.html',
+                            ncyBreadcrumb: {
+                                  label: 'Events',
+                                  description: 'Events'
+                            },
+                            resolve: {
+                                  deps: [
+                                      '$ocLazyLoad',
+                                      function ($ocLazyLoad) {
+                                          return $ocLazyLoad.load({
+                                              serie: true,
+                                              files: [
+                                                    'app/modules/dashboard/controllers/events.js',
+                                             '/app/directives/dirPagination.js'
+                                              ]
+                                          });
+                                      }
+                                  ]
+                            }
+                         }
+             }
 
       ];
       return config;

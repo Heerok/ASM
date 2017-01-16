@@ -1,0 +1,11 @@
+{
+  "label": "Pricing",
+  "icon": "fa fa-inr",
+  "submenu": [
+    {
+      "link": "/pricing/products",
+      "label": "Products",
+      "privilege":""
+    }
+  ]
+}
