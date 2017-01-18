@@ -3,8 +3,13 @@
   "icon": "fa fa-inr",
   "submenu": [
     {
+      "link": "/pricing/scrapingdata",
+      "label": "Scraping Data",
+      "privilege":""
+    },
+    {
       "link": "/pricing/products",
-      "label": "Products",
+      "label": "Products Pricing",
       "privilege":""
     }
   ]

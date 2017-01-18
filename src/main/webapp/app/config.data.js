@@ -76,14 +76,14 @@ var dynamicConfig = function(){
                            }
                         }
             },{
-                 allowedForUrl : "/pricing/products",
-                 state:"app.Products",
+                 allowedForUrl : "/pricing/scrapingdata",
+                 state:"app.Scraping Data",
                  urlRender:{
-                            url: '/pricing/products',
-                            templateUrl: 'app/modules/dashboard/views/products.html',
+                            url: '/pricing/scrapingdata',
+                            templateUrl: 'app/modules/dashboard/views/scrapingdata.html',
                             ncyBreadcrumb: {
-                                  label: 'Events',
-                                  description: 'Events'
+                                  label: 'Scraping Data',
+                                  description: 'Scraping Data'
                             },
                             resolve: {
                                   deps: [
@@ -92,15 +92,42 @@ var dynamicConfig = function(){
                                           return $ocLazyLoad.load({
                                               serie: true,
                                               files: [
-                                                    'app/modules/dashboard/controllers/events.js',
-                                             '/app/directives/dirPagination.js'
+                                                    'app/modules/dashboard/controllers/scrapingdatacontroller.js',
+                                             '/app/directives/dirPagination.js',
+                                             '/js/notify.min.js'
                                               ]
                                           });
                                       }
                                   ]
                             }
                          }
-             }
+             },{
+                   allowedForUrl : "/pricing/products",
+                   state:"app.Products Pricing",
+                   urlRender:{
+                              url: '/pricing/products',
+                              templateUrl: 'app/modules/dashboard/views/productsdata.html',
+                              ncyBreadcrumb: {
+                                    label: 'Product Prices',
+                                    description: 'Product Prices'
+                              },
+                              resolve: {
+                                    deps: [
+                                        '$ocLazyLoad',
+                                        function ($ocLazyLoad) {
+                                            return $ocLazyLoad.load({
+                                                serie: true,
+                                                files: [
+                                                      'app/modules/dashboard/controllers/productsdatacontroller.js',
+                                               '/app/directives/dirPagination.js',
+                                               '/js/notify.min.js'
+                                                ]
+                                            });
+                                        }
+                                    ]
+                              }
+                           }
+               }
 
       ];
       return config;

@@ -22,6 +22,26 @@ public class ScrappingResponse extends BaseModel{
 
     private String response;
 
+    private String unit;
+
+    private Double price;
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
     public String getResponse() {
         return response;
     }

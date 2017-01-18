@@ -1,0 +1,108 @@
+﻿
+<div data-ng-controller="ProductsDataController" class="panel panel-default">
+    <div class="panel-body">
+
+        <h2 class="text-muted"><b>Products Prices</b></h2>                                                                   <!-- Header-->
+        <div class="row">
+            <div class="input-lg col-lg-4">
+                <span class="input-icon">
+                    <input type="text" class="form-control" ng-model="searchText"  placeholder="Search" data-ng-change="setCurrentPage()"/>
+                    <i class="glyphicon glyphicon-search blue"></i>
+                </span>
+            </div>
+            <div class="col-lg-5"></div>
+            <div class=" btn-group col-lg-3 pull-right" style="margin-top:12px;">
+                <button data-ng-click="scrapAll()" class="btn btn-default">
+                    <div class="loader" data-ng-show="calcLoading">
+                    <div align="center"><img src="\images\loading_animation.gif"></div>
+                    </div>
+                    <div data-ng-show="!calcLoading"><i class="glyphicon glyphicon-refresh"></i>Scrap All</div></button>
+                <select name="pageSize" ng-model="pageSize" id="pageSize" style=" height : 32px; ">
+                    <option value=5>5</option>
+                    <option value=10>10</option>
+                    <option value=15>15</option>
+                    <option value=20>20</option>
+                    <option value=30>30</option>
+                    <option value={{TotalRecordCount}}>All</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table-scrollable">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Product Code</th>
+                    <th>Scrap</th>
+                    <th>Prices</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="paginationclass" data-ng-repeat="e in list |filter:searchText | pagination: curPage * pageSize | limitTo : pageSize" >
+                    <td>{{e.code}}</td>
+                    <td role="button">
+                        <div class="loader" data-ng-show="calcLoadingP">
+                            <div align="center"><img src="\images\loading_animation.gif"></div>
+                        </div>
+                        <div data-ng-show="!calcLoadingP" ng-click="scrap(e.code)"><i class="glyphicon glyphicon-refresh"></i></div></button>
+                    </td>
+                    <td>
+                        <a href="" data-ng-click="viewPrices(e)">
+                        <div data-ng-show="e.productPrices.length>0">View {{e.productPrices.length}} Prices</div>
+                        <div data-ng-show="e.productPrices.length==0">No record </div>
+                        </a>
+                    </td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        </br>
+
+        <div class="pagination pagination-centered  pull-right" ng-show="list.length">                            <!-- Pagination -->
+            <ul class="pagination-controle pagination">
+                <li><button type="button" class="btn btn-default" ng-disabled="curPage == 0" ng-click="curPage=curPage-1"> &lt; PREV </button></li>
+                <li><span>Page {{curPage + 1}} of {{ numberOfPages() }}</span></li>
+                <li><button type="button" class="btn btn-default"   ng-disabled="curPage >= TotalRecordCount/pageSize - 1" ng-click="curPage = curPage+1">NEXT &gt;</button></li>
+                <li>
+                    <input type="number" min="1" data-ng-model="goToPage" style=" width:60px; height : 30px; "  data-ng-change="checkPage(goToPage)" >
+                    <button type="button" class="btn btn-default"  ng-click="jumpToPage()" ng-disabled="disableJumpButton">Go To Page</button>
+                </li>
+            </ul>
+        </div>                                                                                                                                     <!-- /Pagination -->
+
+        <div align="right" class="row ">
+            </br></br><span id="shwErrMsg"><b></b></span>
+        </div>
+
+        <script type="text/ng-template" id="productDataModal">
+            <div class="widget">
+                <div class="widget-header bordered-bottom bordered-blue">
+                    <span class="widget-caption">
+                        <b> Product : {{modal.code}} Prices</b>
+                    </span>
+                </div>
+                <div class="widget-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th role="button" ng-click="sortBy('vendor')"><center>Vendor <i class="fa fa-sort"></i></center></th>
+                            <th role="button" ng-click="sortBy('price')"><center>Price <i class="fa fa-sort"></i></center></th>
+                            <th role="button" ng-click="sortBy('date')"><center>Date <i class="fa fa-sort"></i></center></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="active" data-ng-repeat="p in modal.productPrices | orderBy:propertyName:reverse">
+                            <td>{{p.vendor}}</td>
+                            <td>{{p.price}}</td>
+                            <td>{{p.date}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </script>
+
+    </div>
+</div>

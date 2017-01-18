@@ -105,6 +105,16 @@ public class BatchImportService extends BatchImportAdapter{
             ));
             return;
         }
+
+        if(webScrapingRepository.findByProductCodeAndVendorAndUrl(dataRow.get("bids"),dataRow.get("vendor"),dataRow.get("url"))!=null){
+            batch.addResult(new BatchResult(
+                    dataRow.get("vendor"),
+                    dataRow.get("bids"),
+                    "Duplicate data"
+            ));
+            return;
+        }
+
         WebScraping webScraping = new WebScraping();
         webScraping.setVendor(dataRow.get("vendor"));
         webScraping.setUrl(dataRow.get("url"));
@@ -120,7 +130,7 @@ public class BatchImportService extends BatchImportAdapter{
         webScraping.setProduct(product);
         batch.addResult(new BatchResult(
                 dataRow.get("vendor"),
-                dataRow.get("code"),
+                dataRow.get("bids"),
                 "ok"));
         if(!dryrun){
             webScrapingRepository.save(webScraping);
