@@ -4,12 +4,15 @@ import digitalaxom.asm.db.Article;
 import digitalaxom.asm.service.ArticleService;
 import digitalaxom.asm.view.ArticleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by Heerok on 04-10-2016.
@@ -54,7 +57,11 @@ public class ArticleController {
 
 
     private List<ArticleDTO> toDTO(List<Article> all){
-        return all.stream().map(ArticleDTO::new).collect(Collectors.toList());
+        List<ArticleDTO> dtos = new ArrayList<>();
+        for(Article a: all){
+            dtos.add(new ArticleDTO(a));
+        }
+        return dtos;
     }
 
 }
