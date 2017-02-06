@@ -1,5 +1,5 @@
-﻿app.controller("ArticlesController", ['$rootScope', '$scope', '$state', '$location','$http','$modal',
-function ($rootScope, $scope, $state, $location, $http,$modal) {
+﻿app.controller("ArticlesController", ['$rootScope', '$scope', '$state', '$location','$http','$modal','urls',
+function ($rootScope, $scope, $state, $location, $http,$modal,urls) {
     var vm = this;
 
      $scope.curPage = 0;
@@ -31,7 +31,7 @@ function ($rootScope, $scope, $state, $location, $http,$modal) {
 
     $scope.init = function(){
 
-        $http.get("/admin/articles/findAll").then(function(res){
+        $http.get(urls.BASE_API + "/admin/articles/findAll").then(function(res){
             $scope.articles = res.data;
         });
 
@@ -87,7 +87,7 @@ function ($rootScope, $scope, $state, $location, $http,$modal) {
         if(e.language){
             fd.append('language',e.language);
         }
-        $http.post(url, fd, {
+        $http.post(urls.BASE_API + url, fd, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         })
@@ -111,7 +111,7 @@ function ($rootScope, $scope, $state, $location, $http,$modal) {
     }
 
     $scope.delete = function(id){
-        $http.delete("/admin/articles/delete?id="+id).then(function(res){
+        $http.delete(urls.BASE_API + "/admin/articles/delete?id="+id).then(function(res){
             $scope.init();
         });
     }

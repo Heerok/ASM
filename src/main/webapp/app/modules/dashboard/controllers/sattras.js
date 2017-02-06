@@ -1,5 +1,5 @@
-﻿app.controller("SattraController", ['$scope','$http','$modal',
-function ($scope, $http,$modal) {
+﻿app.controller("SattraController", ['$scope','$http','$modal','urls',
+function ($scope, $http,$modal,urls) {
     var vm = this;
 
      $scope.curPage = 0;
@@ -30,7 +30,7 @@ function ($scope, $http,$modal) {
 
     $scope.init = function(){
 
-        $http.get("/admin/sattra/findAll").then(function(res){
+        $http.get(urls.BASE_API + "/admin/sattra/findAll").then(function(res){
             $scope.events = res.data;
             $scope.TotalRecordCount = res.data.length;
         });
@@ -55,7 +55,7 @@ function ($scope, $http,$modal) {
 
     $scope.save = function(e){
         console.log(JSON.stringify(e));
-        $http.post("/admin/sattra/save",e).then(function(res){
+        $http.post(urls.BASE_API + "/admin/sattra/save",e).then(function(res){
             console.log("saved==");
             $scope.init();
         });
@@ -63,14 +63,14 @@ function ($scope, $http,$modal) {
     }
 
     $scope.delete = function(id){
-        $http.delete("/admin/sattra/delete?id="+id).then(function(res){
+        $http.delete(urls.BASE_API + "/admin/sattra/delete?id="+id).then(function(res){
             $scope.init();
         });
     }
 
     $scope.addArticles = function(e){
 
-        $http.get("/admin/articles/findAll").then(function(res){
+        $http.get(urls.BASE_API + "/admin/articles/findAll").then(function(res){
             $scope.articles = res.data;
         });
         $scope.event = e;
@@ -82,7 +82,7 @@ function ($scope, $http,$modal) {
     }
 
     $scope.AddArticle = function(a){
-        $http.post("/admin/sattra/addArticle?sattraId="+$scope.event.id+"&articleId="+a).then(function(res){
+        $http.post(urls.BASE_API + "/admin/sattra/addArticle?sattraId="+$scope.event.id+"&articleId="+a).then(function(res){
             console.log(JSON.stringify(res));
             if(res.data.status){
                 $.notify(res.data.message,"success");
@@ -105,7 +105,7 @@ function ($scope, $http,$modal) {
     }
 
     $scope.deleteArticle = function(articleId){
-        $http.post("/admin/sattra/deleteArticle?sattraId="+$scope.event.id+"&articleId="+articleId).then(function(res){
+        $http.post(urls.BASE_API + "/admin/sattra/deleteArticle?sattraId="+$scope.event.id+"&articleId="+articleId).then(function(res){
             console.log(JSON.stringify(res));
             if(res.data.status){
                 $.notify(res.data.message,"success");

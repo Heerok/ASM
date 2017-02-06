@@ -1,6 +1,6 @@
 angular.module('app')
-    .factory('Auth', ['jwtHelper', '$http', '$localStorage', '$timeout','$rootScope',
-        function (jwtHelper, $http, $localStorage, $timeout,$rootScope) {
+    .factory('Auth', ['jwtHelper', '$http', '$localStorage', '$timeout','$rootScope', 'urls',
+        function (jwtHelper, $http, $localStorage, $timeout,$rootScope, urls) {
         function urlBase64Decode(str) {
             var output = str.replace('-', '+').replace('_', '/');
             switch (output.length % 4) {
@@ -19,8 +19,9 @@ angular.module('app')
         }
 
         return {
+
             login: function (data, success, error) {
-                $http.post('/userlogin', data).success(
+                $http.post('http://asomsattramahasabha.org:8193/asm4/userlogin', data).success(
                     function (response) {
                         $localStorage.token = response.token;
                         // $localStorage.refresh_token = response.refresh_token;

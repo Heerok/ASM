@@ -1,7 +1,7 @@
 'use strict';
 //angular.module('fieldiqMenu', []).controller('menuCtrl', function($scope) {
-app.controller('menuCtrl', function($scope, $http) {
-  $http.get('/api/v2/menu').then(function(response){
+app.controller('menuCtrl', function($scope, $http,urls) {
+  $http.get(urls.BASE_API +'/api/v2/menu').then(function(response){
         $scope.roleHypCustomer = false;
         var menus = response.data.submenu;
         /*$http.get('/api/role/loadCurrentUserRoles').then(function(response){
