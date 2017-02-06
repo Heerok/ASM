@@ -1,10 +1,8 @@
 package digitalaxom.asm.db;
 
-import org.springframework.util.StringUtils;
-
-import javax.persistence.*;
-import java.util.*;
-import java.util.stream.Collectors;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
