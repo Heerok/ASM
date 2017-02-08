@@ -35,5 +35,5 @@ app.run(function ($rootScope,  $location, $localStorage, $http, jwtHelper) {
 });
 
 app.constant('urls', {
-    BASE_API: 'http://asomsattramahasabha.org:8193/asm4/'
+    BASE_API: ''
 });
