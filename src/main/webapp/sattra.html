@@ -18,9 +18,13 @@
         <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     
         <link rel="stylesheet" href="assets/css/bootstrap.css">
-    
+        <script src="js/angular.min.js"></script>
+        <script src="app/app.js"></script>
+        <script src="app/controllers/sattracontroller.js"></script>
+        <script src="app/directives/dirPagination.js"></script>
+
     </head>
-    <body class="index">
+    <body class="index" ng-app="app" ng-controller="SattraController">
 
     <div id="loader-wrapper">
                 <div id="loader"></div>
@@ -125,13 +129,78 @@
             
             <div class="fh5co-narrow-content" id="sattra">
             <div class="blank wow fadeInDown"></div>
-                <h2 style="color:green" class="wow fadeInDown">&nbsp;<font face="Arial">List of Sattras</font></h2>
+                <!--<h2 style="color:green" class="wow fadeInDown">&nbsp;<font face="Arial">List of Sattras</font></h2>-->
                 <div class="row">
+                    <h2 style="color:green" class="wow fadeInDown">&nbsp;<font face="Arial">List of Sattras</font></h2>
+<!--
                     <div class="col-md-12">
                     <h4>&nbsp;&nbsp;&nbsp;TO BE ADDED SOON</h4>
+-->
 
                     </div>
-                </div> 
+                </div>
+                <div class="row">
+                    <div class="input-lg col-lg-4">
+                        <span class="input-icon">
+                            <input type="text" class="form-control" ng-model="searchText"  placeholder="Search" data-ng-change="setCurrentPage()"/>
+                            <i class="glyphicon glyphicon-search blue"></i>
+                        </span>
+                    </div>
+                    <div class="col-lg-5"></div>
+                    <div class=" btn-group col-lg-1 pull-right" style="margin-top:12px;">
+                        <select name="pageSize" ng-model="pageSize" id="pageSize" style=" height : 32px; ">
+                            <option value=5>5</option>
+                            <option value=10>10</option>
+                            <option value=15>15</option>
+                            <option value=20>20</option>
+                            <option value=30>30</option>
+                            <option value={{TotalRecordCount}}>All</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-scrollable">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Sattra Name</th>
+                            <th>Sattradhikar's Name</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>District</th>
+                            <th>State</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="paginationclass" data-ng-repeat="e in events |filter:searchText | pagination: curPage * pageSize | limitTo : pageSize" >
+                            <td>{{e.sattraName}}</td>
+                            <td>{{e.sattradhikarName}}</td>
+                            <td>{{e.phoneNo}}</td>
+                            <td>{{e.contactDetails}}</td>
+                            <td>{{e.district}}</td>
+                            <td>{{e.state}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </br>
+
+                <div class="pagination pagination-centered  pull-right" ng-show="events.length">                            <!-- Pagination -->
+                    <ul class="pagination-controle pagination">
+                        <li><button type="button" class="btn btn-default" ng-disabled="curPage == 0" ng-click="curPage=curPage-1"> &lt; PREV </button></li>
+                        <li><span>Page {{curPage + 1}} of {{ numberOfPages() }}</span></li>
+                        <li><button type="button" class="btn btn-default"   ng-disabled="curPage >= TotalRecordCount/pageSize - 1" ng-click="curPage = curPage+1">NEXT &gt;</button></li>
+                        <li >
+                            <input type="number" min="1" data-ng-model="goToPage" style=" width:60px; height : 30px; "  data-ng-change="checkPage(goToPage)" >
+                            <button type="button" class="btn btn-default"  ng-click="jumpToPage()" ng-disabled="disableJumpButton">Go To Page</button>
+                        </li>
+                    </ul>
+                </div>                                                                                                                                     <!-- /Pagination -->
+
+                <div align="right" class="row ">
+                    </br></br><span id="shwErrMsg"><b></b></span>
+                </div>
+
             </div>
 
 
@@ -218,7 +287,7 @@ Traditionally, an Artist performs a Borgeet in the following sequence: it beings
                         <li><a href="https://www.facebook.com/asomsattramahasabha/" class="icon circle fa-facebook"></a></li>
                         <li>
                         <a href="https://www.youtube.com/channel/UCz1pMpkz2fu2gxXBxRQ8Onw">
-                        <img class="icon circle" src="images/Youtube_Play.png"></a>
+                        <img class="icon circle" src="images/YouTube_Play.png"></a>
                         </li>
                     </ul>
 
