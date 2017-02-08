@@ -7,8 +7,8 @@ import digitalaxom.asm.view.SattrasListDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by Heerok on 04-10-2016.
@@ -54,7 +54,11 @@ public class SattraController {
     }
 
     private List<SattrasListDTO> toDTO(List<SattrasList> list){
-        return list.stream().map(SattrasListDTO::new).collect(Collectors.toList());
+        ArrayList<SattrasListDTO> dtos = new ArrayList<>();
+        for(SattrasList sl: list){
+            dtos.add(new SattrasListDTO(sl));
+        }
+        return dtos;
     }
 
 }
