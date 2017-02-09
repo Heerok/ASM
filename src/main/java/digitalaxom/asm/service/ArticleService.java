@@ -27,8 +27,11 @@ public class ArticleService {
     @Autowired
     private ArticleRepository articleRepository;
 
-    @Value("${asm.filelocation}")
-    private String filedir;
+    @Value("${asm.website.filelocation}")
+    private String filedirW;
+
+    @Value("${asm.admin.filelocation}")
+    private String filedirA;
 
     public List<Article> findAll(){
         return articleRepository.findAll();
@@ -43,16 +46,45 @@ public class ArticleService {
         article.setArticleString(articleString);
 
         if(!file.isEmpty()){
+            String fname = "";
             String[] fileName = file.getOriginalFilename().split("\\.");
             if(fileName.length>1){
                 try {
                     String filename=request.getServletContext().getRealPath("/articles/")+file.getOriginalFilename();
 
+                    Path dirpath = Paths.get(filedirA);
+                    if (dirpath.toFile().exists()) {
+                        if (!dirpath.toFile().isDirectory()) {
+                            System.out.println("{} is not a dir, cant continue");
+                        }
+                    } else {
+                        dirpath.toFile().mkdirs();
+                    }
+                    fname= dirpath.resolve(file.getOriginalFilename()).toString();
+
+
                     byte[] bytes = file.getBytes();
                     BufferedOutputStream stream =
-                            new BufferedOutputStream(new FileOutputStream(new File(filename)));
+                            new BufferedOutputStream(new FileOutputStream(new File(fname)));
                     stream.write(bytes);
                     stream.close();
+
+                    Path dirpath1 = Paths.get(filedirW);
+                    if (dirpath1.toFile().exists()) {
+                        if (!dirpath1.toFile().isDirectory()) {
+                            System.out.println("{} is not a dir, cant continue");
+                        }
+                    } else {
+                        dirpath1.toFile().mkdirs();
+                    }
+                    String fname1= dirpath1.resolve(file.getOriginalFilename()).toString();
+
+
+                    byte[] bytes1 = file.getBytes();
+                    BufferedOutputStream stream1 =
+                            new BufferedOutputStream(new FileOutputStream(new File(fname1)));
+                    stream1.write(bytes1);
+                    stream1.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -98,6 +130,10 @@ public class ArticleService {
 
     public List<Article> findAllActive(){
         return articleRepository.findByActiveTrue();
+    }
+
+    public List<Article> findAllActive(String lang){
+        return articleRepository.findByActiveTrueAndLanguage(lang);
     }
 
 }

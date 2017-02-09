@@ -53,7 +53,7 @@ function ($rootScope, $scope, $state, $location, $http,$modal,urls) {
         }
         $scope.modalInstance = $modal.open({
             templateUrl: 'editEventModal',
-            size: 'lg',
+            size: 'md',
             scope: $scope
         });
     }
@@ -102,7 +102,7 @@ function ($rootScope, $scope, $state, $location, $http,$modal,urls) {
     }
 
     $scope.viewFile = function(e){
-        $scope.pdfFile = "articles/"+e.filePath;
+        $scope.pdfFile ="/articles1/"+e.filePath;
         $scope.modalInstance = $modal.open({
             templateUrl: 'pdf',
             size: 'md',
