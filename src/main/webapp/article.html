@@ -18,9 +18,12 @@
 	    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 	
 	    <link rel="stylesheet" href="assets/css/bootstrap.css">
-	
+        <script src="js/angular.min.js"></script>
+        <script src="app/app.js"></script>
+        <script src="app/controllers/articlecontroller.js"></script>
+
 	</head>
-	<body class="index">
+	<body class="index" ng-app="app" ng-controller="ArticleController">
 
     <div id="loader-wrapper">
                 <div id="loader"></div>
@@ -64,26 +67,36 @@
             <div class="animated fadeInDown">
             <center>
                 <h2 style="color:green" class="fh5co-heading animated fadeInDown"><font face="Arial">English Articles</font></h2>           
-                    <a href="#carit" class="scrolly"><b style="color:#22696b">Carit Puthi</b></a>
+                <div data-ng-repeat="a in englishArticles">
+                    <a href="#{{a.id}}" class="scrolly"><b style="color:#22696b">{{a.name}}</b></a>
                     <br>
-                    <a href="#ankiya" class="scrolly"><b style="color:#22696b">Ankiya Nat</b></a>
-                    <br>
-                    <a href="#family" class="scrolly"><b style="color:#22696b">Family Tree of Sankardeva</b></a>
-                    <br>
-                    <a href="#history" class="scrolly"><b style="color:#22696b">History of development of Sattra and their contribution in Assamese society</b></a>
-                    <br>            
-                    <a href="#life" class="scrolly"><b style="color:#22696b">Life of Sankardeva</b></a> 
+                </div>
+                <!--<a href="#carit" class="scrolly"><b style="color:#22696b">Carit Puthi</b></a>
+                <br>
+                <a href="#ankiya" class="scrolly"><b style="color:#22696b">Ankiya Nat</b></a>
+                <br>
+                <a href="#family" class="scrolly"><b style="color:#22696b">Family Tree of Sankardeva</b></a>
+                <br>
+                <a href="#history" class="scrolly"><b style="color:#22696b">History of development of Sattra and their contribution in Assamese society</b></a>
+                <br>
+                <a href="#life" class="scrolly"><b style="color:#22696b">Life of Sankardeva</b></a>-->
                     </center> 
                 </div>
                
                 <div>
-                    <div id="carit">
+                    <div id="{{a.id}}" data-ng-repeat="a in englishArticles">
                     <div class="blank"></div>
-                    <h3 style="color: #22696b" class="fh5co-heading animated fadeInDown"><b>CARIT PUTHI</b></h3>
-    				<object id="pdf_content" width="100%" height="500px" type="application/pdf" trusted="yes" application="yes" title="Assembly" data="articles/CARIT PUTHI.pdf?#zoom=100&scrollbar=1&toolbar=1&navpanes=1">
-    				<p>Please install PDF viewer plugin for your browser OR <a href="articles/CARIT PUTHI.pdf">Click here to view in mobile PDF viewer</a></p>
+                    <h3 style="color: #22696b" class="fh5co-heading animated fadeInDown"><b>{{a.name}}</b></h3>
+    				<object id="pdf_content" width="100%" height="500px" type="application/pdf" trusted="yes" application="yes" title="Assembly" data="articles1/{{a.filePath}}?#zoom=100&scrollbar=1&toolbar=1&navpanes=1">
+    				<p>Please install PDF viewer plugin for your browser OR <a href="articles1/{{a.filePath}}">Click here to view in mobile PDF viewer</a></p>
     				</object>
-					</div><br>
+                        <br>
+					</div>
+                    <div data-ng-show="assameseArticles.length==0">
+                        TO BE ADDED SOON
+                    </div>
+                    <br>
+<!--
                     <div id="ankiya">
                     <div class="blank"></div>
                     <h3 style="color: #22696b" class="fh5co-heading animated fadeInDown"><b>ANKIYA NAT</b></h3>
@@ -113,41 +126,65 @@
     				<p>Please install PDF viewer plugin for your browser OR <a href="articles/LIFE OF SANKARDEVA.pdf">Click here to view in mobile PDF viewer</a></p>
     				</object>
 					</div> 
-                     
+-->
+
                 </div>
 
             <div class="fh5co-narrow-content animated fadeInDown" id="assamese">
             <div class="blank"></div>
                 <center>
                 <h2 style="color:green" class="fh5co-heading"><font face="Arial">Assamese Articles</font></h2>
-                   TO BE ADDED SOON
+                    <div data-ng-repeat="a in assameseArticles">
+                        <a href="#{{a.id}}" class="scrolly"><b style="color:#22696b">{{a.name}}</b></a>
+                        <br>
+                    </div>
+                    <div data-ng-show="assameseArticles.length==0">
+                        TO BE ADDED SOON
+                    </div>
                 </center>
-            </div>  
-
+            </div>
+            <div>
+                <div id="{{a.id}}" data-ng-repeat="a in assameseArticles">
+                    <div class="blank"></div>
+                    <h3 style="color: #22696b" class="fh5co-heading animated fadeInDown"><b>{{a.name}}</b></h3>
+                    <object id="pdf_content" width="100%" height="500px" type="application/pdf" trusted="yes" application="yes" title="Assembly" data="articles1/{{a.filePath}}?#zoom=100&scrollbar=1&toolbar=1&navpanes=1">
+                        <p>Please install PDF viewer plugin for your browser OR <a href="articles1/{{a.filePath}}">Click here to view in mobile PDF viewer</a></p>
+                    </object>
+                    <br>
+                </div><br>
+            </div>
             <div class="fh5co-narrow-content animated fadeInDown" id="hindi">
             <div class="blank"></div>
             <center>
-                <h2 style="color:green" class="fh5co-heading"><font face="Arial">Hindi Articles</font></h2>           
-                    <a href="#sankardevaHindi" class="scrolly"><b style="color:#22696b">Sankardeva</b></a>
+                <h2 style="color:green" class="fh5co-heading"><font face="Arial">Hindi Articles</font></h2>
+                <div data-ng-repeat="a in hindiArticles">
+                    <a href="#{{a.id}}" class="scrolly"><b style="color:#22696b">{{a.name}}</b></a>
                     <br>
-                    <a href="#ankiyaHindi" class="scrolly"><b style="color:#22696b">Ankiya Nat</b></a>
-                    <br>
-                    <a href="#asomHindi" class="scrolly"><b style="color:#22696b">Asom Sattra Mahasabha</b></a>
-                    <br>
-                    <a href="#historyHindi" class="scrolly"><b style="color:#22696b">History, Development and Contribution of Sattra</b></a>
-                    <br>            
-                    <a href="#dharmHindi" class="scrolly"><b style="color:#22696b">Vaishnav Dhram in Assam</b></a> 
-                    </center>
+                </div>
+                <div data-ng-show="hindiArticles.length==0">
+                    TO BE ADDED SOON
+                </div>
+
+                <!--<a href="#sankardevaHindi" class="scrolly"><b style="color:#22696b">Sankardeva</b></a>
+                <br>
+                <a href="#ankiyaHindi" class="scrolly"><b style="color:#22696b">Ankiya Nat</b></a>
+                <br>
+                <a href="#asomHindi" class="scrolly"><b style="color:#22696b">Asom Sattra Mahasabha</b></a>
+                <br>
+                <a href="#historyHindi" class="scrolly"><b style="color:#22696b">History, Development and Contribution of Sattra</b></a>
+                <br>
+                <a href="#dharmHindi" class="scrolly"><b style="color:#22696b">Vaishnav Dhram in Assam</b></a>-->
+            </center>
 
                 <div>
-                    <div id="sankardevaHindi">
+                    <div id="{{a.id}}" data-ng-repeat="a in hindiArticles">
                     <div class="blank"></div>
-                    <h3 style="color: #22696b" class="fh5co-heading animated fadeInDown"><b>SANKARDEVA - HINDI</b></h3>
-                    <object id="pdf_content" width="100%" height="500px" type="application/pdf" trusted="yes" application="yes" title="Assembly" data="articles/Hindi/Sankardeva - Hindi.pdf?#zoom=100&scrollbar=1&toolbar=1&navpanes=1">
-                    <p>Please install PDF viewer plugin for your browser OR <a href="articles/Hindi/Sankardeva - Hindi.pdf">Click here to view in mobile PDF viewer</a></p>
+                    <h3 style="color: #22696b" class="fh5co-heading animated fadeInDown"><b>{{a.name}}</b></h3>
+                    <object id="pdf_content" width="100%" height="500px" type="application/pdf" trusted="yes" application="yes" title="Assembly" data="articles1/{{a.filePath}}?#zoom=100&scrollbar=1&toolbar=1&navpanes=1">
+                    <p>Please install PDF viewer plugin for your browser OR <a href="articles1/{{a.filePath}}">Click here to view in mobile PDF viewer</a></p>
                     </object>
                     </div><br>
-                    <div id="ankiyaHindi">
+                    <!--<div id="ankiyaHindi">
                     <div class="blank"></div>
                     <h3 style="color: #22696b" class="fh5co-heading animated fadeInDown"><b>ANKIYA NAT - HINDI</b></h3>
                     <object id="pdf_content" width="100%" height="500px" type="application/pdf" trusted="yes" application="yes" title="Assembly" data="articles/Hindi/Ankiya Naat - Hindi.pdf?#zoom=100&scrollbar=1&toolbar=1&navpanes=1">
@@ -175,7 +212,7 @@
                     <object id="pdf_content" width="100%" height="500px" type="application/pdf" trusted="yes" application="yes" title="Assembly" data="articles/Hindi/Vaishnav Dhram in Assam - Hindi.pdf?#zoom=100&scrollbar=1&toolbar=1&navpanes=1">
                     <p>Please install PDF viewer plugin for your browser OR <a href="articles/Hindi/Vaishnav Dhram in Assam - Hindi.pdf">Click here to view in mobile PDF viewer</a></p>
                     </object>
-                    </div> 
+                    </div> -->
                      
                 </div>
 
