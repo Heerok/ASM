@@ -1,81 +1,253 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	A Digital Axom Design || digitalaxom.com | rakeshgogoi.me
+-->
 <html>
-<head>
-  <title>ASM Admin</title>
-  <meta name="description" content="Angular Bootstrap Dashboard"/>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  
-    <link href="plugins/angular-material/angular-material.min.css" rel="stylesheet" />
-    <!--CSS-->
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    <link href="css/site.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/nga.all.min.css" rel="stylesheet" />
-    <link href="css/themes.css" rel="stylesheet" />
-    <link href="css/dashboard.css" rel="stylesheet" />
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
-    <link href="plugins/bootstrap-slider/slider.css" rel="stylesheet" />
-    <link href="css/flexslider.css" rel="stylesheet" />
-    <link href="plugins/owl-carousel/owl.theme.css" rel="stylesheet" />
-    <link href="plugins/owl-carousel/owl.transitions.css" rel="stylesheet" />
-    <link href="plugins/owl-carousel/owl.carousel.css" rel="stylesheet" />
-</head>
-<body ng-app="app" class="hold-transition sidebar-mini {{theme}} {{layout}}">
-    <!--Scripts-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="plugins/bootstrap-slider/bootstrap-slider.js"></script>
+	<head>
+		<title>Asom Sattra Mahasabha</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css"/>
+		<link rel="stylesheet" href="assets/css/reel.css"/>
+		<link rel="stylesheet" href="assets/css/animate.css">
+		<link rel="stylesheet" href="assets/css/hover-min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="Official website of Asom Sattra Mahasabha Delhi" />
+		<meta name="keywords" content="Assam, Asom, Sattra, Sattriya, Mahasabha, Dance, Classical, Assamese Culture, Axom" />
+		<meta name="author" content="Asom Sattra Mahasabha, Digital Axom" />
+
+	    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+	    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	
+	    <link rel="stylesheet" href="assets/css/bootstrap.css">
+	
+	</head>
+	<body class="index">
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-91739784-1', 'auto');
+  ga('send', 'pageview');
+
+</script>	
+
+	<!-- Loader -->
+	        <div id="loader-wrapper">
+				<div id="loader"></div>
+
+				<div class="loader-section section-left"></div>
+				<div class="loader-section section-right"></div>
+			</div>
 
 
-    <script src="js/angular.min.js"></script>
-    <script src="js/angular-animate.min.js"></script>
-    <script src="js/angular-ui-router-min.js"></script>
-    <script src="js/angular-resource.js"></script>
-    <script src="plugins/knob/jquery.knob.js"></script>
-    <script src="plugins/Chart.min.js"></script>
-    <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+		<div>
+			<!-- Header -->
+				<header id="header" class="alt" style="opacity: 0.8">
+					<nav id="nav">
+						<ul class="animated bounce">
+						    <li class="current"><a href="index.html">Home</a></li>
+                            <li class="current"><a href="about.html">About Us</a></li>
+                            <li class="current"><a href="mahapurush.html">Mahapurush</a></li>
+                            <li class="current"><a href="sattra.html">Sattra & Sattriya Culture</a></li>
+                            <li class="current"><a href="article.html">Articles</a></li>
+                            <li class="current"><a href="events.html">Events</a></li>
+                            <li class="current"><a href="gallery/index.html">Gallery</a></li>
+                            <li class="current"><a href="books.html">Books</a></li>
+                            <li class="current"><a href="contact.html">Contacts</a></li>
+                        </ul>
+					</nav>
+				</header>			
+			
 
-    <!-- Angular Material Library -->
-    <script src="js/angular-material.min.js"></script>
-    <script src="js/angular-aria.min.js"></script>
-    <script src="js/angular-messages.min.js"></script>
+			<!-- Banner -->
+				<section id="banner" class="homepage">
+					<div class="inner">
 
-    <script src="js/angular-flash.js"></script>
-    <script src="js/angular-sanitize.js"></script>
-    <script src="js/ui-bootstrap-tpls-0.13.0.min.js"></script>
+						<header>
+							<img src="images/Logo1.png">
+						</header>
+						<p><h3>ASOM SATTRA MAHASABHA<br>DELHI</h3></p>
+						<footer>
+							<ul>
+							<li><input type="button" href="#main" class="btn btn-info scrolly" value="Explore" /></li>
+							</ul>
+						</footer>
+					</div>
+				</section>
 
-    <!--Common-->
+			<!-- Main -->
+			<div class="col-md-12 homeback">
+           <article id="main" style="color: white">
 
-    <script src="app/common/config.js"></script>
+					<header class="special container current wow fadeInDown">
+						<h2 style="color: skyblue"><font face="Arial">The Organisation</font></h2>
 
-    <!--main app-->
-    <script src="app/app.js"></script>
-    <script src="app/common/appCtrl.js"></script>
-    <script src="app/services/apiService.js"></script>
+						<p>Asom Sattra Mahasabha, is a registered socio-cultural organization that serves as the umbrella organization for the Sattra of Assam which aims at preserving and propagating the religious and socio-cultural teachings of Mahapurusha Srimanta Sankardeva. Since its inception in 1915, as Santa Sanmilani, Sattra Sangha in 1945 and Sattra Mahasabha in 1990, the organization has been ardently engaged in the development and spread of Sattriya Sanskriti (Culture). </p>		
+						<p>In the words of Dr. Arshiya Sethi, “What makes the Asom Sattra Mahasabha a significant institution, is the fact that it emerged out of self reflection, to serve a specific self determined agenda. It is motivated by an idealist goal, seeks out governmental and non-governmental partners when necessary, and it works methodically through organizational practices”.</p>			
+					<div class="major">
+								<a href="about.html"><h4><b>READ MORE</b></h4></a> 
+					</div>
+					</header>
 
-    <!--Login Module-->
-    <script src="app/modules/login/loginMgmt.js"></script>
-    <script src="app/modules/login/loginService.js"></script>
-    <script src="app/modules/login/loginCtrl.js"></script>
+			<div class="blank"></div>
+			<div class="blank"></div>
 
-    <!--Dashboard Module-->
-    <script src="app/modules/dashboard/dashboardApplication.js"></script>
-    <script src="app/modules/dashboard/dashboardService.js"></script>
-        <!-- Controllers -->
-        <script src="app/modules/dashboard/controllers/websites.js"></script>
-        <script src="app/modules/dashboard/controllers/about.js"></script>
-        <script src="app/modules/dashboard/controllers/achievements.js"></script>
-        <script src="app/modules/dashboard/controllers/contact.js"></script>
-        <script src="app/modules/dashboard/controllers/education.js"></script>
-        <script src="app/modules/dashboard/controllers/experience.js"></script>
-        <script src="app/modules/dashboard/controllers/gallery.js"></script>
-        <script src="app/modules/dashboard/controllers/home.js"></script>
-        <script src="app/modules/dashboard/controllers/portfolio.js"></script>
-        <script src="app/modules/dashboard/controllers/sattras.js"></script>
-        <script src="app/modules/dashboard/controllers/events.js"></script>
-        <script src="app/modules/dashboard/controllers/articles.js"></script>
-    <div flash-message="5000"></div>
-    <ui-view></ui-view>
-    
-</body>
+			
+         <div class="special container current">
+            <div class="blank"></div>
+            <div class="blank"></div>
+            <img class="wow fadeInRight pull-right" src="images/muktiApp.png" object-fit: contain;"> 
+            <header><h2 style="color: skyblue"><font face="Arial">MUKTI</font></h2><br><br></header>
+                       <header>            
+                        <p class="wow fadeInLeft">                        	
+                        	Mukti is an Audio App based on the great creation of Mahapurush Madhabdeva's "Naam-Ghosa". <br>The App which is conceptualised by Asom Sattra Mahasabha Delhi and created by Swarnagiri Press Delhi <br>is available on Google Play Store to download.
+                        </p>
+                        <p class="wow fadeInLeft" style="color: cyan">
+                        	For more about Mahapurush Madhabdeva, <a href="about.html"><h4><b>click here </b></h4></a> 
+                        </p>
+                    </header>
+                    <br><br> 
+                    <a href="https://play.google.com/store/apps/details?id=com.asomapp_&hl=en"> <img class="hvr-bounce-out pull-right" src="images/google-badge.png" object-fit: contain;">  </a> 
+                
+            </div>
+			
+			<section class="carousel">
+					<header><h2 style="color: skyblue"><font face="Arial">TRENDING ARTICLES</font></h2><br><br></header>
+					<div class="reel">
+						<article>
+							<a href="article.html#carit" class="image featured"><img src="images/thumbtack.png" alt="" /></a>
+							<header>
+								<h3><a href="article.html#carit">Carit Puthi</a></h3>
+							</header>
+							<p>The Carit Puthi of Assam constitutes  a remarkable legacy of the Bhakti movement initiated by Sankardeva..</p>
+						</article>
+
+						<article>
+							<a href="article.html#ankiya" class="image featured"><img src="images/thumbtack.png" alt="" /></a>
+							<header>
+								<h3><a href="article.html#ankiya">Ankiya Nat</a></h3>
+							</header>
+							<p>The Ankiya Nat (traditional Assamese one-act plays) are the true index of Mahapurush Srimanta Sankardeva's creative genius...</p>
+						</article>
+
+						<article>
+							<a href="article.html#family" class="image featured"><img src="images/thumbtack.png" alt="" /></a>
+							<header>
+								<h3><a href="article.html#family">Family Tree of Sankardeva</a></h3>
+							</header>
+							<p>From Chandivara (Sandhya) to Puroshottam and Chaturbhuj...</p>
+						</article>
+
+						<article>
+							<a href="article.html#history" class="image featured"><img src="images/thumbtack.png" alt="" /></a>
+							<header>
+								<h3><a href="article.html#history">History of development of Sattras</a></h3>
+							</header>
+							<p>All about the Vaishnavite Sattras from its roots and significance over Assamese religions and culture...</p>
+						</article>
+
+						<article>
+							<a href="article.html#life" class="image featured"><img src="images/thumbtack.png" alt="" /></a>
+							<header>
+								<h3><a href="article.html#life">Life of Sankardeva</a></h3>
+							</header>
+							<p>All about Sankardeva, the saint-scholar, poet, playwright, social-religious reformer and his extraordinary life...</p>
+						</article>
+
+						<article>
+							<a href="article.html" class="image featured"><img src="images/thumbtack.png" alt="" /></a>
+							<header>
+								<h3><a href="article.html">New Article</a></h3>
+							</header>
+							<p>Coming soon...</p>
+						</article>
+
+						<article>
+							<a href="article.html" class="image featured"><img src="images/thumbtack.png" alt="" /></a>
+							<header>
+								<h3><a href="article.html">New Article</a></h3>
+							</header>
+							<p>Coming soon...</p>
+						</article>
+
+						<article>
+							<a href="article.html" class="image featured"><img src="images/thumbtack.png" alt="" /></a>
+							<header>
+								<h3><a href="article.html">New Article</a></h3>
+							</header>
+							<p>Coming soon...</p>
+						</article>
+
+						<article>
+							<a href="article.html" class="image featured"><img src="images/thumbtack.png" alt="" /></a>
+							<header>
+								<h3><a href="article.html">New Article</a></h3>
+							</header>
+							<p>Coming soon...</p>
+						</article>
+
+						<article>
+							<a href="article.html" class="image featured"><img src="images/thumbtack.png" alt="" /></a>
+							<header>
+								<h3><a href="article.html">New Article</a></h3>
+							</header>
+							<p>Coming soon...</p>
+						</article>
+
+					</div>
+				</section>
+
+					<!-- Three -->
+                    <!-- <header class="special container current wow fadeInDown">
+                    						<h2 style="color: skyblue">Mahapurush</h2>
+                    						<p>Mahapurush Srimanta Sankardeva is a divine light bestowed on us, at a catastrophic time in our lives when our society had seen the pit of all evil and social unrest. The forces of the dark were at the pinnacle, almost threatening to demolish the very foundation of our society by adversely creeping in the minds of people who could be easily influenced...</p>					
+                    					<div class="major">
+                    								<a href="mahapurush.html"><h4><b>READ MORE</b></h4></a> </p>
+                    					</div>
+                    					</header> -->
+</article>
+</div>
+
+
+            <footer id="footer" class="col-md-12">	
+					<ul class="icons">
+						<li><a href="https://twitter.com/asom_sattra" class="icon circle fa-twitter"></a></li>
+						<li><a href="https://www.facebook.com/asomsattramahasabha/" class="icon circle fa-facebook"></a></li>
+						<li>
+						<a href="https://www.youtube.com/channel/UCz1pMpkz2fu2gxXBxRQ8Onw">
+						<img class="icon circle" src="images/YouTube_Play.png"></a>
+						</li>
+					</ul>
+
+					<ul class="copyright">
+						<li>&copy; Asom Sattra Mahasabha</li><li>Design: <a href="http://rakeshgogoi.me">Digital Axom</a></li>
+					</ul>
+<a id="to-top" href="#top" class="btn btn-dark btn-lg" style="display: block; position: fixed;"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a> 
+				</footer>
+
+            </div>
+
+		
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollgress.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/reel.js"></script>
+			<script src="assets/js/jquery.onvisible.min.js"></script>
+			<script src="assets/js/main.js"></script>
+	        <script src="assets/js/bootstrap.min.js"></script>
+	        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+	        <script>
+              new WOW().init();
+              </script>
+
+
+	</body>
 </html>

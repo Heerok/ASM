@@ -1,0 +1,47 @@
+﻿<div>
+    <div class="">
+        <br><br><br><br><br><br><br>
+        <div class="row">
+            <div class="col-lg-4 col-lg-push-4">
+                <div id="box" class="panel panel-primary">
+                    <div class="panel-heading sky">
+                        <center class="white"><h4><b>Login</b></h4></center>
+                    </div>
+                    <div class="panel-body bg-whitesmoke">
+                        <br>
+                        <form name="form" ng-submit="login()" role="form" >
+                            <div class="form-group col-lg-10 col-lg-push-1" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+                                <span class="input-icon icon-right">
+                                <input type="text" name="username" class="form-control" placeholder="Username"
+                                       ng-model="email" required autofocus/>
+                                <i class="glyphicon glyphicon-user"></i>
+                                </span>
+                                <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+                            </div><br>
+                            <div class="form-group col-lg-10 col-lg-push-1" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+                                <span class="input-icon icon-right">
+                                <input type="password" name="password" class="form-control" placeholder="Password"
+                                       ng-model="password" required/>
+                                <i class="glyphicon glyphicon-lock"></i>
+                                </span>
+                                <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+                            </div>
+                            <!--<div class="form-group col-lg-10 col-lg-push-1">
+                                <a href="/#/forgotPassword">FORGOT PASSWORD?</a>
+                            </div><br>-->
+                            <p><div class="red col-lg-10 col-lg-push-1" ng-show="error">
+                            {{error}}
+                        </div>
+                            <div class="form-actions col-lg-4 col-lg-push-7">
+                                <button type="submit" ng-disabled="form.$invalid || dataLoading" class="form-control btn btn-primary shiny white" ng-click="login()"><b>Login</b></button>
+                                <img ng-if="dataLoading"
+                                     src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+                            </div><br><br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/app/controllers/logincontroller.js"></script>

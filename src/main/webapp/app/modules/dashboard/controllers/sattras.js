@@ -1,23 +1,39 @@
-﻿dashboard.controller("SattraController", ['$rootScope', '$scope', '$state', '$location', 'dashboardService', 'Flash','$http','$modal',
-function ($rootScope, $scope, $state, $location, dashboardService, Flash,$http,$modal) {
+﻿app.controller("SattraController", ['$scope','$http','$modal',
+function ($scope, $http,$modal) {
     var vm = this;
 
-    $scope.currentPage = 1;
-    $scope.numPerPage = 10
-      ,$scope.maxSize = 5;
+     $scope.curPage = 0;
+     $scope.pageSize = 10;
+
+     $scope.setCurrentPage = function(){
+         $scope.curPage = 0;
+     };
+
+     $scope.numberOfPages = function() {
+         $scope.totalPages = Math.ceil(($scope.TotalRecordCount) / ($scope.pageSize));
+         return $scope.totalPages;
+     };
+
+     $scope.checkPage = function(pageNumber){
+         if(pageNumber > $scope.totalPages){
+             $("#shwErrMsg").html(" Page number is greater than total pages. ").show().fadeOut(3000);
+             $scope.disableJumpButton = true;
+         }else{
+             $scope.disableJumpButton = false;
+         }
+     };
+
+     $scope.jumpToPage = function(){
+         $scope.curPage = $scope.goToPage - 1;
+         $scope.goToPage = null;
+     };
 
     $scope.init = function(){
 
         $http.get("/admin/sattra/findAll").then(function(res){
-            vm.events = res.data;
-    $scope.$watch('currentPage + numPerPage', function() {
-        var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-        , end = begin + $scope.numPerPage;
-
-        $scope.filteredTodos = vm.events.slice(begin, end);
-      });
+            $scope.events = res.data;
+            $scope.TotalRecordCount = res.data.length;
         });
-
     }
 
 
@@ -48,6 +64,55 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash,$http,$
 
     $scope.delete = function(id){
         $http.delete("/admin/sattra/delete?id="+id).then(function(res){
+            $scope.init();
+        });
+    }
+
+    $scope.addArticles = function(e){
+
+        $http.get("/admin/articles/findAll").then(function(res){
+            $scope.articles = res.data;
+        });
+        $scope.event = e;
+        $scope.modalInstance = $modal.open({
+            templateUrl: 'articleModal',
+            size: 'md',
+            scope: $scope
+        });
+    }
+
+    $scope.AddArticle = function(a){
+        $http.post("/admin/sattra/addArticle?sattraId="+$scope.event.id+"&articleId="+a).then(function(res){
+            console.log(JSON.stringify(res));
+            if(res.data.status){
+                $.notify(res.data.message,"success");
+            }else{
+                $.notify(res.data.message,"error");
+            }
+            $scope.modalInstance.close();
+            $scope.init();
+        });
+    }
+
+    $scope.viewArticle = function(e){
+        $scope.event = e;
+        $scope.articles = e.articles;
+        $scope.modalInstance = $modal.open({
+            templateUrl: 'viewArticleModal',
+            size: 'md',
+            scope: $scope
+        });
+    }
+
+    $scope.deleteArticle = function(articleId){
+        $http.post("/admin/sattra/deleteArticle?sattraId="+$scope.event.id+"&articleId="+articleId).then(function(res){
+            console.log(JSON.stringify(res));
+            if(res.data.status){
+                $.notify(res.data.message,"success");
+            }else{
+                $.notify(res.data.message,"error");
+            }
+            $scope.modalInstance.close();
             $scope.init();
         });
     }

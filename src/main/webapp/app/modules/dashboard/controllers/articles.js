@@ -1,11 +1,38 @@
-﻿dashboard.controller("ArticlesController", ['$rootScope', '$scope', '$state', '$location', 'dashboardService', 'Flash','$http','$modal',
-function ($rootScope, $scope, $state, $location, dashboardService, Flash,$http,$modal) {
+﻿app.controller("ArticlesController", ['$rootScope', '$scope', '$state', '$location','$http','$modal',
+function ($rootScope, $scope, $state, $location, $http,$modal) {
     var vm = this;
+
+     $scope.curPage = 0;
+     $scope.pageSize = 10;
+
+     $scope.setCurrentPage = function(){
+         $scope.curPage = 0;
+     };
+
+     $scope.numberOfPages = function() {
+         $scope.totalPages = Math.ceil(($scope.TotalRecordCount) / ($scope.pageSize));
+         return $scope.totalPages;
+     };
+
+     $scope.checkPage = function(pageNumber){
+         if(pageNumber > $scope.totalPages){
+             $("#shwErrMsg").html(" Page number is greater than total pages. ").show().fadeOut(3000);
+             $scope.disableJumpButton = true;
+         }else{
+             $scope.disableJumpButton = false;
+         }
+     };
+
+     $scope.jumpToPage = function(){
+         $scope.curPage = $scope.goToPage - 1;
+         $scope.goToPage = null;
+     };
+
 
     $scope.init = function(){
 
         $http.get("/admin/articles/findAll").then(function(res){
-            vm.articles = res.data;
+            $scope.articles = res.data;
         });
 
         $scope.uploadTypes = [{Code:"Assamese", Value:"Assamese"},
@@ -26,7 +53,7 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash,$http,$
         }
         $scope.modalInstance = $modal.open({
             templateUrl: 'editEventModal',
-            size: 'md',
+            size: 'lg',
             scope: $scope
         });
     }
@@ -50,12 +77,15 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash,$http,$
         if(e.name){
             fd.append('name',e.name);
         }
+        if(e.articleString){
+            fd.append('articleString',e.articleString);
+        }
         fd.append('active',e.active);
         if(e.id){
             fd.append('Id',e.id);
         }
-        if(e.lang){
-            fd.append('language',e.lang);
+        if(e.language){
+            fd.append('language',e.language);
         }
         $http.post(url, fd, {
             transformRequest: angular.identity,

@@ -1,0 +1,40 @@
+{
+  "name": "ASM",
+  "authors": [
+    "Heerok <nits.heerok@gmail.com>"
+  ],
+  "description": "ASM",
+  "main": "index.html",
+  "license": "PRIVATE",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "angular-xeditable": "^0.2.0",
+    "html5shiv": "^3.7.3",
+    "respond": "^1.4.2",
+    "bootstrap": "^3.3.7",
+    "angular-aria": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-bootstrap": "^2.0.2",
+    "angularLocalStorage": "ngStorage#^0.3.2",
+    "angular-jwt": "^0.1.3",
+    "angular-cookies": "^1.5.8",
+    "angular-storage": "^0.5.0",
+    "ngstorage": "^0.3.11",
+    "AngularJS-Toaster": "angularjs-toaster#^2.0.0"
+  },
+  "resolutions": {
+    "angular-cookies": "^1.5.8",
+    "angular": "1.5.8"
+  }
+}

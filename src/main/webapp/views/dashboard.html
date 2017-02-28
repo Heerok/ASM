@@ -1,0 +1,55 @@
+﻿<script src="/js/notify.min.js"></script>
+<script src="app/controllers/mainDashboard.js"></script>
+<div data-ng-controller="mainDashboardController">
+    <div ng-if="dasboardRole2=='careDashboard'">
+       <div ng-include="'views/pickup/pickupdashboard.html'"></div>
+    </div>
+    <div ng-if="dasboardRole5=='CRMDashboard'">
+       <div ng-include="'views/Hyperlocal/crmDashboard.html'"></div>
+    </div>
+    <div ng-if="dasboardRole3=='sellerDashboard'">
+    </div>
+    <div ng-if="dasboardRole1=='mainDashboard'">
+        <div ng-include="'views/mainDashboard.html'"></div>
+    </div>
+    <!--<div data-ng-repeat="role in currentUserRoles">
+        <div ng-switch on="role.RoleValue">
+           <div ng-switch-when="FACILITYADMIN">
+                <div ng-include="'views/mainDashboard.html'"></div>
+            </div>
+            <div ng-switch-when="SUPERVISOR">
+                <div ng-include="'views/mainDashboard.html'"></div>
+            </div>
+            <div ng-switch-when="SUPERUSER">
+                <div ng-include="'views/mainDashboard.html'"></div>
+            </div>
+            <div ng-switch-when="CREW">
+                <div ng-include="'views/mainDashboard.html'"></div>
+            </div>
+            <div ng-switch-when="ORGADMIN">
+                <div ng-include="'views/mainDashboard.html'"></div>
+            </div>
+            <div ng-switch-when="TRANSPORTADMIN">
+                <div ng-include="'views/mainDashboard.html'"></div>
+            </div>
+            <div ng-switch-when="RESOURCEADMIN">
+                <div ng-include="'views/mainDashboard.html'"></div>
+            </div>
+            <div ng-switch-when="RESOURCEAPPROVER">
+                <div ng-include="'views/mainDashboard.html'"></div>
+            </div>
+            <div ng-switch-when="RESOURCEBUYER">
+                <div ng-include="'views/mainDashboard.html'"></div>
+            </div>
+            <div ng-switch-when="SELLER">
+                <div ng-include="'views/mainDashboard.html'"></div>
+            </div>
+            <div ng-switch-when="CUSTOMERCARE">
+                <div ng-include="'views/pickup/pickupdashboard.html'"></div>
+            </div>
+            <div ng-switch-default>
+
+            </div>
+        </div>
+        </div>-->
+</div>

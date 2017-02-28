@@ -1,0 +1,21 @@
+{
+  "label": "Admin",
+  "icon": "user-plus",
+  "submenu": [
+    {
+      "link": "/admin/sattra",
+      "label": "Sattra List",
+      "privilege":""
+    },
+    {
+      "link": "/admin/articles",
+      "label": "Articles",
+      "privilege":""
+    },
+    {
+      "link": "/admin/events",
+      "label": "Events",
+      "privilege":""
+    }
+  ]
+}
