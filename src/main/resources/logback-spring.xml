@@ -10,8 +10,8 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/home/asomsatt/logs/asm.log</file>
-        <append>true</append>
+        <file>/tmp/logs/asm.log</file>
+        <append>false</append>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>asm.%d{yyyy-MM-dd}.log</fileNamePattern>

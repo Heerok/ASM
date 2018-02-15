@@ -3,6 +3,7 @@ package digitalaxom.asm.controller;
 import digitalaxom.asm.db.SattrasList;
 import digitalaxom.asm.service.SattraService;
 import digitalaxom.asm.view.JsonResponse;
+import digitalaxom.asm.view.SattraDTO;
 import digitalaxom.asm.view.SattrasListDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

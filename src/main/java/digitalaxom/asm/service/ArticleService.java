@@ -1,5 +1,10 @@
 package digitalaxom.asm.service;
 
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 import digitalaxom.asm.Repository.ArticleRepository;
 import digitalaxom.asm.db.Article;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,6 +90,14 @@ public class ArticleService {
                             new BufferedOutputStream(new FileOutputStream(new File(fname1)));
                     stream1.write(bytes1);
                     stream1.close();
+                    AmazonS3 s3Client=new AmazonS3Client(new BasicAWSCredentials("", ""));
+
+                    ObjectMetadata objectMetadata = new ObjectMetadata();
+                    objectMetadata.setContentLength(file.getSize());
+                    PutObjectRequest putObjectRequest = new PutObjectRequest("", filename, file.getInputStream(), objectMetadata);
+                    s3Client.putObject(putObjectRequest);
+
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

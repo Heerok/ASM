@@ -4,6 +4,7 @@ import digitalaxom.asm.Repository.ArticleRepository;
 import digitalaxom.asm.Repository.SattraRepository;
 import digitalaxom.asm.db.Article;
 import digitalaxom.asm.db.SattrasList;
+import digitalaxom.asm.view.SattraDTO;
 import digitalaxom.asm.view.SattrasListDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

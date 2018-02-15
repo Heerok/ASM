@@ -21,7 +21,8 @@ angular.module('app')
         return {
 
             login: function (data, success, error) {
-                $http.post('http://asomsattramahasabha.org:8193/asm4/userlogin', data).success(
+                //prod $http.post('http://asomsattramahasabha.org:8193/asm4/userlogin', data).success(
+                $http.post('/userlogin', data).success(
                     function (response) {
                         $localStorage.token = response.token;
                         // $localStorage.refresh_token = response.refresh_token;
